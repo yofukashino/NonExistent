@@ -2,11 +2,12 @@ import Types from "./types";
 
 export default [
   {
-    find: "",
+    find: '("ReadStateStore")',
     replacements: [
       {
-        match: /^/,
-        replace: () => ``,
+        match: /set lastMessageId\((\w+)\){/,
+        replace: (prefix: string, messageId: string) =>
+          `${prefix}if (replugged.plugins.getExports("dev.yofukashino.NonExistent")?._checkMessageId?.(this.channelId, ${messageId})) return;`,
       },
     ],
   },

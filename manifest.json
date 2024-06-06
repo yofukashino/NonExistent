@@ -1,22 +1,21 @@
 {
-    "id":  "dev.yofukashino.NonExistent",
-    "name":  "NonExistent",
-    "description":  "Hide user from discord like if they never existed.",
-    "author":  {
-                   "discordID":  "1121961711080050780",
-                   "name":  "Nanakusa",
-                   "github":  "YofukashiNo"
-               },
-    "version":  "1.0.0",
-    "updater":  {
-                    "id":  "YofukashiNo/NonExistent",
-                    "type":  "github"
-                },
-    "license":  "MIT",
-    "type":  "replugged-plugin",
-    "renderer":  "src/index.ts",
-    "source":  "https://github.com/YofukashiNo/NonExistent",
-    "image":  [
-                  "https://i.imgur.com/14CNs3a.png?CHANGE-THIS-URL"
-              ]
+  "id": "dev.yofukashino.NonExistent",
+  "name": "NonExistent",
+  "description": "Hide user from discord like if they never existed.",
+  "author": {
+    "discordID": "1121961711080050780",
+    "name": "Nanakusa",
+    "github": "YofukashiNo"
+  },
+  "version": "1.0.0",
+  "updater": {
+    "id": "dev.yofukashino.NonExistent",
+    "type": "store"
+  },
+  "license": "MIT",
+  "type": "replugged-plugin",
+  "renderer": "src/index.ts",
+  "plaintextPatches": "src/plaintextPatches.ts",
+  "source": "https://github.com/YofukashiNo/NonExistent",
+  "image": "https://i.imgur.com/GcgYZuM.png"
 }

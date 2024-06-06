@@ -1,1 +1,3 @@
-export const defaultSettings = {};
+export const defaultSettings = {
+  ids: [],
+};

@@ -1,0 +1,80 @@
+.nonExistent-UserSelector * {
+  transition:
+    max-height 0.4s ease-in-out,
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
+}
+.nonExistent-RemovalCheckmark {
+  background-color: var(--bg-base-secondary);
+  border: 2px solid var(--bg-base-secondary);
+  border-radius: 100%;
+  color: var(--brand-500);
+}
+
+.nonExistent-RemovalRow {
+  background-color: var(--bg-base-secondary);
+  border-radius: 16px;
+  height: 390px;
+  overflow: hidden;
+  width: calc(100% - 24px);
+}
+
+.nonExistent-RemovalRowHeader {
+  background-color: var(--bg-base-tertiary);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 68px;
+  justify-content: center;
+  padding-left: 16px;
+  text-align: left;
+}
+
+.nonExistent-RemovalScroller {
+  height: 322px;
+  padding: 16px 6px 16px 16px;
+}
+
+.nonExistent-RemovalScrollerInner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.nonExistent-ToggleAll {
+  position: absolute;
+  right: 72px;
+  border-radius: 50px;
+}
+
+.nonExistent-hidden {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.nonExistent-Waumpus {
+  height: 240px;
+  z-index: 999;
+}
+.nonExistent-Waumpus.nonExistent-hidden {
+  transition: unset;
+}
+
+.nonExistent-WaumpusImg {
+  width: 50%;
+}
+.nonExistent-WaumpusText {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--text-muted) !important;
+}
+
+[class^="messagesWrapper"] [class^="divider"]:not(:has(+ li)) {
+  display: none;
+}
