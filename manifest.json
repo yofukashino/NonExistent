@@ -7,7 +7,7 @@
     "name": "Nanakusa",
     "github": "YofukashiNo"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updater": {
     "id": "dev.yofukashino.NonExistent",
     "type": "store"
