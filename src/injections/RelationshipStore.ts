@@ -21,4 +21,10 @@ export default (): void => {
     const ids = SettingValues.get("ids", defaultSettings.ids);
     return ids.some(({ userId }) => userId === id) || res;
   });
+
+  PluginInjector.after(Modules.RelationshipStore, "getPendingCount", () => {
+    return Object.entries(Modules.RelationshipStore?.getRelationships?.() ?? {}).filter(
+      ([_id, type]) => type === 3,
+    ).length;
+  });
 };

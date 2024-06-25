@@ -11,6 +11,7 @@ export namespace Types {
   export type ReactTree = util.Tree & React.ReactElement;
   export type MenuProps = ContextMenuProps["ContextMenu"];
   export type User = GeneralDiscordTypes.User;
+  export type UserType = typeof GeneralDiscordTypes.User;
   export type Channel = GeneralDiscordTypes.Channel;
   export type Message = GeneralDiscordTypes.Message & {
     poll?: Record<string, unknown>;
@@ -50,7 +51,7 @@ export namespace Types {
   export interface ProfileActions {
     acceptAgreements: DefaultTypes.AnyFunction;
     fetchCurrentUser: DefaultTypes.AnyFunction;
-    fetchMutualFriends: DefaultTypes.AnyFunction;
+    fetchMutualFriends?: DefaultTypes.AnyFunction;
     fetchProfile: DefaultTypes.AnyFunction;
     getUser: DefaultTypes.AnyFunction;
     setFlag: DefaultTypes.AnyFunction;
@@ -308,7 +309,63 @@ export namespace Types {
       ...args: unknown[]
     ) => React.ReactElement;
   }
-
+  export interface GuildMemberProfile {
+    accentColor: undefined | number;
+    banner: undefined | string;
+    bio: undefined | string;
+    emoji: null | string;
+    guildId: string;
+    popoutAnimationParticleType: undefined | number;
+    pronouns: undefined | string;
+    themeColors: undefined | string;
+    userId: string;
+  }
+  interface UserProfile {
+    accentColor: undefined | number;
+    application: null | string;
+    applicationRoleConnections: [];
+    banner: undefined | string;
+    bio: string;
+    connectedAccounts: Array<{ id: string; name: string; type: string; verified: boolean }>;
+    emoji: null | string;
+    lastFetched: number;
+    popoutAnimationParticleType: undefined | number;
+    premiumGuildSince: null | number;
+    premiumSince: null | number;
+    premiumType: null | number;
+    profileFetchFailed: boolean;
+    pronouns: undefined | string;
+    themeColors: undefined | string;
+    userId: string;
+  }
+  export interface DisplayProfile {
+    accentColor: number;
+    banner: undefined | string;
+    bio: string;
+    emoji: null | string;
+    getBannerURL: DefaultTypes.AnyFunction;
+    guildId: undefined | string;
+    popoutAnimationParticleType: undefined | number;
+    pronouns: string;
+    themeColors: undefined | string;
+    userId: string;
+    _GuildMemberProfile: null | GuildMemberProfile;
+    _profileThemesExperimentBucket: number;
+    _userProfile: UserProfile;
+    application: null;
+    canEditThemes: boolean;
+    canUsePremiumProfileCustomization: boolean;
+    isInEditProfileThemesBucket: boolean;
+    premiumGuildSince: null | string;
+    premiumSince: null | string;
+    premiumType: null | number;
+    primaryColor: number;
+  }
+  export interface DisplayProfileUtils {
+    default: (userId: string, guildId: string) => DisplayProfile;
+    getDisplayProfile: (userId: string, guildId: string) => DisplayProfile;
+    useDisplayProfileWithFetchEffect: (userId: string, guildId: string) => DisplayProfile;
+  }
   export interface ChannelAutoCompleteOptions {
     default: (
       options: {
@@ -384,23 +441,21 @@ export namespace Types {
       | void;
   }
   export interface ForYouItems {
-    ForYouItems: GenericMemo & {
-      type: (props: {
-        items: Array<
-          Record<string, unknown> & {
-            other_user: {
-              avatar: string;
-              avatarDecorationData: Record<string, string>;
-              discriminator: string;
-              globalName: string;
-              id: string;
-              publicFlags: number;
-              username: string;
-            };
-          }
-        >;
-      }) => React.ReactElement;
-    };
+    [key: string]: (props: {
+      items: Array<
+        Record<string, unknown> & {
+          other_user: {
+            avatar: string;
+            avatarDecorationData: Record<string, string>;
+            discriminator: string;
+            globalName: string;
+            id: string;
+            publicFlags: number;
+            username: string;
+          };
+        }
+      >;
+    }) => React.ReactElement;
   }
   export interface RecentMentions {
     EmptyStateCenter: DefaultTypes.AnyFunction;
@@ -422,6 +477,7 @@ export namespace Types {
   }
   export interface Modules {
     loadModules?: () => Promise<void>;
+    ProfileActionsModule?: GenericModule;
     ProfileActions?: ProfileActions;
     VoiceUser?: VoiceUser;
     CallTiles?: GenericModule;
@@ -435,6 +491,8 @@ export namespace Types {
     BlockedMessage?: BlockedMessage;
     GuildTooltipRow?: GuildTooltipRow;
     ChannelAutoCompleteOptions?: ChannelAutoCompleteOptions;
+    User?: UserType;
+    DisplayProfileUtils?: DisplayProfileUtils;
     RelationshipStore?: RelationshipStore;
     TypingStore?: TypingStore;
     ChannelMemberStore?: ChannelMemberStore;

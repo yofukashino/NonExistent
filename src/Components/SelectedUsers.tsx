@@ -32,10 +32,18 @@ export default ({
     const fetchUserAndMap = async (): Promise<void> => {
       for (const userId of userIds) {
         await Modules?.ProfileActions?.fetchProfile?.(userId, {
+          original: true,
           withMutualGuilds: false,
         });
       }
-      setMappedUsers(Object.fromEntries(userIds.map((id) => [id, UltimateUserStore.getUser(id)])));
+      setMappedUsers(
+        Object.fromEntries(
+          userIds.map((id) => [
+            id,
+            (UltimateUserStore.getUser as (id: string, original: boolean) => Types.User)(id, true),
+          ]),
+        ),
+      );
     };
     fetchUserAndMap();
   }, [userIds]);

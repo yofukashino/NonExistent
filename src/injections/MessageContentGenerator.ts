@@ -1,8 +1,16 @@
+import { webpack } from "replugged";
 import { PluginInjector } from "../index";
 import Modules from "../lib/requiredModules";
+import Types from "../types";
 
 export default (): void => {
-  PluginInjector.after(Modules.MessageContentGenerator, "default", (_args, res) => {
+  const { MessageContentGenerator } = Modules;
+  const loader = webpack.getFunctionKeyBySource(
+    MessageContentGenerator,
+    "hideSimpleEmbedContent:",
+  ) as "default";
+
+  PluginInjector.after(Modules.MessageContentGenerator, loader, (_args, res) => {
     res.content = res.content.filter(
       (c, i) =>
         (i !== 0 && res.content[i - 1] !== null && c) ||

@@ -4,6 +4,7 @@ import injectBlockedMessage from "./BlockedMessage";
 import injectCallTiles from "./CallTiles";
 import injectChannelAutoCompleteOptions from "./ChannelAutoCompleteOptions";
 import injectChannelMemberStore from "./ChannelMemberStore";
+import injectDisplayProfileUtils from "./DisplayProfileUtils";
 import injectForYouItems from "./ForYouItems";
 import injectGuildTooltipRow from "./GuildTooltipRow";
 import injectIncomingCallStore from "./IncomingCallStore";
@@ -13,6 +14,7 @@ import injectMessageContentGenerator from "./MessageContentGenerator";
 import injectMessages from "./Messages";
 import injectParser from "./Parser";
 import injectPrivateChannelSortStore from "./PrivateChannelSortStore";
+import injectProfileActions from "./ProfileActions";
 import injectQuickSwitcherStore from "./QuickSwitcherStore";
 import injectRecentMentions from "./RecentMentions";
 import injectRecentUnread from "./RecentUnread";
@@ -21,6 +23,7 @@ import injectRelationshipStore from "./RelationshipStore";
 import injectTypingStore from "./TypingStore";
 import injectUserContext from "./UserContext";
 import injectUserMention from "./UserMention";
+import injectUserStore from "./UserStore";
 import injectVoiceStateStore from "./VoiceStateStore";
 import injectVoiceUser from "./VoiceUser";
 export const applyInjections = async (): Promise<void> => {
@@ -30,6 +33,7 @@ export const applyInjections = async (): Promise<void> => {
   injectCallTiles();
   injectChannelAutoCompleteOptions();
   injectChannelMemberStore();
+  injectDisplayProfileUtils();
   injectForYouItems();
   injectGuildTooltipRow();
   injectIncomingCallStore();
@@ -39,6 +43,7 @@ export const applyInjections = async (): Promise<void> => {
   injectMessages();
   injectParser();
   injectPrivateChannelSortStore();
+  injectProfileActions();
   injectQuickSwitcherStore();
   injectRecentMentions();
   injectRecentUnread();
@@ -47,6 +52,7 @@ export const applyInjections = async (): Promise<void> => {
   injectTypingStore();
   injectUserContext();
   injectUserMention();
+  injectUserStore();
   injectVoiceStateStore();
   injectVoiceUser();
 };

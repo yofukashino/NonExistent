@@ -1,9 +1,12 @@
+import { webpack } from "replugged";
 import { PluginInjector, SettingValues } from "../index";
 import Modules from "../lib/requiredModules";
 import { defaultSettings } from "../lib/consts";
 
 export default (): void => {
-  PluginInjector.after(Modules.RecentMentions, "default", (_args, res: React.ReactElement) => {
+  const { RecentMentions } = Modules;
+  const loader = webpack.getFunctionKeyBySource(RecentMentions, "Messages.UNBLOCK_TO_JUMP_TITLE");
+  PluginInjector.after(RecentMentions, loader, (_args, res: React.ReactElement) => {
     const ids = SettingValues.get("ids", defaultSettings.ids);
     if (Array.isArray(res?.props?.items))
       res.props.items = res.props.items.filter(
