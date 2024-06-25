@@ -1,7 +1,6 @@
 import { webpack } from "replugged";
 import { PluginInjector } from "../index";
 import Modules from "../lib/requiredModules";
-import Types from "../types";
 
 export default (): void => {
   const { MessageContentGenerator } = Modules;

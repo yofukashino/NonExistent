@@ -6,7 +6,7 @@ import Types from "../types";
 
 export default (): void => {
   const Memo = webpack.getExportsForProps<Types.GenericMemo>(Modules.MessageConstructor, ["type"]);
-  const GenerateContent = webpack.getFunctionBySource<Types.MessageContentGenerator["default"]>(
+  const generateContent = webpack.getFunctionBySource<Types.MessageContentGenerator["default"]>(
     Modules?.MessageContentGenerator,
     "hideSimpleEmbedContent:",
   );
@@ -18,7 +18,7 @@ export default (): void => {
       if (ids.some(({ userId }) => userId === message?.author?.id)) return null;
       if (
         message.type == 0 &&
-        !GenerateContent(message).content.filter(Boolean).length &&
+        !generateContent(message).content.filter(Boolean).length &&
         !message?.embeds?.length &&
         !message?.attachments?.length &&
         !message?.stickerItems?.length &&
