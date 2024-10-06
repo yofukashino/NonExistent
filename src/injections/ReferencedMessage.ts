@@ -11,7 +11,13 @@ export default (): void => {
     ReferencedMessage,
     loader,
     (
-      [, _, __, ___, { message }]: [unknown, unknown, unknown, unknown, { message: Types.Message }],
+      [, _, __, ___, { message } = { message: null }]: [
+        unknown,
+        unknown,
+        unknown,
+        unknown,
+        { message: Types.Message },
+      ],
       res: string[],
     ) => {
       const ids = SettingValues.get("ids", defaultSettings.ids);

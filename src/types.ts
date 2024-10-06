@@ -475,6 +475,44 @@ export namespace Types {
       },
     ) => React.ReactElement;
   }
+  export interface VoiceUtils {
+    enable: DefaultTypes.AnyFunction;
+    interact: DefaultTypes.AnyFunction;
+    reset: DefaultTypes.AnyFunction;
+    setAecDump: DefaultTypes.AnyFunction;
+    setAttenuation: DefaultTypes.AnyFunction;
+    setAudioSubsystem: DefaultTypes.AnyFunction;
+    setAutomaticGainControl: DefaultTypes.AnyFunction;
+    setDebugLogging: DefaultTypes.AnyFunction;
+    setDisableLocalVideo: DefaultTypes.AnyFunction;
+    setEchoCancellation: DefaultTypes.AnyFunction;
+    setExperimentalEncoders: DefaultTypes.AnyFunction;
+    setExperimentalSoundshare: DefaultTypes.AnyFunction;
+    setGoLiveSource: DefaultTypes.AnyFunction;
+    setHardwareEncoding: DefaultTypes.AnyFunction;
+    setInputDevice: DefaultTypes.AnyFunction;
+    setInputVolume: DefaultTypes.AnyFunction;
+    setLocalPan: DefaultTypes.AnyFunction;
+    setLocalVolume: DefaultTypes.AnyFunction;
+    setLoopback: DefaultTypes.AnyFunction;
+    setMode: DefaultTypes.AnyFunction;
+    setNoiseCancellation: DefaultTypes.AnyFunction;
+    setNoiseSuppression: DefaultTypes.AnyFunction;
+    setOpenH264: DefaultTypes.AnyFunction;
+    setOutputDevice: DefaultTypes.AnyFunction;
+    setOutputVolume: DefaultTypes.AnyFunction;
+    setQoS: DefaultTypes.AnyFunction;
+    setSelfMute: DefaultTypes.AnyFunction;
+    setSilenceWarning: DefaultTypes.AnyFunction;
+    setTemporarySelfMute: DefaultTypes.AnyFunction;
+    setVideoDevice: DefaultTypes.AnyFunction;
+    setVideoEnabled: DefaultTypes.AnyFunction;
+    setVideoHook: DefaultTypes.AnyFunction;
+    toggleLocalMute: DefaultTypes.AnyFunction;
+    toggleLocalSoundboardMute: DefaultTypes.AnyFunction;
+    toggleSelfDeaf: DefaultTypes.AnyFunction;
+    toggleSelfMute: DefaultTypes.AnyFunction;
+  }
   export interface Modules {
     loadModules?: () => Promise<void>;
     ProfileActionsModule?: GenericModule;
@@ -492,6 +530,7 @@ export namespace Types {
     GuildTooltipRow?: GuildTooltipRow;
     ChannelAutoCompleteOptions?: ChannelAutoCompleteOptions;
     User?: UserType;
+    VoiceUtils?: VoiceUtils;
     DisplayProfileUtils?: DisplayProfileUtils;
     RelationshipStore?: RelationshipStore;
     TypingStore?: TypingStore;

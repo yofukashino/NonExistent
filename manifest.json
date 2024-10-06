@@ -5,7 +5,7 @@
   "author": {
     "discordID": "1121961711080050780",
     "name": "Nanakusa",
-    "github": "YofukashiNo"
+    "github": "yofukashino"
   },
   "version": "1.0.2",
   "updater": {
@@ -16,6 +16,6 @@
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
   "plaintextPatches": "src/plaintextPatches.ts",
-  "source": "https://github.com/YofukashiNo/NonExistent",
+  "source": "https://github.com/yofukashino/NonExistent",
   "image": "https://i.imgur.com/GcgYZuM.png"
 }

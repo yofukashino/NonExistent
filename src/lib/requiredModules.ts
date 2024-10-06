@@ -5,7 +5,7 @@ export const Modules: Types.Modules = {};
 Modules.loadModules = async (): Promise<void> => {
   Modules.ProfileActionsModule ??= await webpack
     .waitForModule<Types.GenericModule>(
-      webpack.filters.bySource("UserProfileModalActionCreators"),
+      webpack.filters.bySource("setFlag: user cannot be undefined"),
       {
         timeout: 10000,
       },
@@ -112,13 +112,13 @@ Modules.loadModules = async (): Promise<void> => {
     });
 
   Modules.UserMentions ??= await webpack
-    .waitForModule<Types.GenericExport>(webpack.filters.bySource('location:"UserMention"'), {
+    .waitForModule<Types.GenericExport>(webpack.filters.bySource(".USER_MENTION)"), {
       raw: true,
       timeout: 10000,
     })
     .then(({ exports }) => exports)
     .catch(() => {
-      throw new Error("Failed To Find ProfileActions Module");
+      throw new Error("Failed To Find UserMentions Module");
     });
 
   Modules.BlockedMessage ??= await webpack
@@ -161,6 +161,13 @@ Modules.loadModules = async (): Promise<void> => {
       throw new Error("Failed To Find DisplayProfileUtils Module");
     });
 
+  Modules.VoiceUtils ??= await webpack
+    .waitForProps<Types.VoiceUtils>(["setInputVolume"], {
+      timeout: 10000,
+    })
+    .catch(() => {
+      throw new Error("Failed To Find VoiceUtils Module");
+    });
   Modules.RelationshipStore ??=
     webpack.getByStoreName<Types.RelationshipStore>("RelationshipStore");
   Modules.TypingStore ??= webpack.getByStoreName<Types.TypingStore>("TypingStore");
