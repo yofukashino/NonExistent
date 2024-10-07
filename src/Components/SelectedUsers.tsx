@@ -3,7 +3,7 @@ import {
   React,
   users as UltimateUserStore,
 } from "replugged/common";
-import { Button, Flex, Text } from "replugged/components";
+import { Button, Flex, Loader, Text } from "replugged/components";
 import Modules from "../lib/requiredModules";
 import User from "./User";
 import Types from "../types";
@@ -92,37 +92,41 @@ export default ({
               All
             </Button>
           </div>
-          <Scroller className="nonExistent-RemovalScroller">
-            <div className="nonExistent-RemovalScrollerInner">
-              {unselectedUsers.map(
-                (userId) =>
-                  mappedUser[userId] && (
-                    <User
-                      user={mappedUser[userId]}
-                      checked={false}
-                      setChecked={(e) => {
-                        toogleUser(userId, e);
-                      }}
-                    />
-                  ),
-              )}
-              <Flex
-                direction={Flex.Direction.VERTICAL}
-                align={Flex.Align.CENTER}
-                justify={Flex.Justify.END}
-                className={[
-                  "nonExistent-Waumpus",
-                  unselectedUsers.length !== 0 && "nonExistent-hidden",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}>
-                <img src="/assets/68691bc51a5e2da8e8cf.svg" className="nonExistent-WaumpusImg" />
-                <Text.Normal className="nonExistent-WaumpusText">
-                  Wumpus Exists in nothingness
-                </Text.Normal>
-              </Flex>
-            </div>
-          </Scroller>
+          {Object.keys(mappedUser).length ? (
+            <Scroller className="nonExistent-RemovalScroller">
+              <div className="nonExistent-RemovalScrollerInner">
+                {unselectedUsers.map(
+                  (userId) =>
+                    mappedUser[userId] && (
+                      <User
+                        user={mappedUser[userId]}
+                        checked={false}
+                        setChecked={(e) => {
+                          toogleUser(userId, e);
+                        }}
+                      />
+                    ),
+                )}
+                <Flex
+                  direction={Flex.Direction.VERTICAL}
+                  align={Flex.Align.CENTER}
+                  justify={Flex.Justify.END}
+                  className={[
+                    "nonExistent-Waumpus",
+                    unselectedUsers.length !== 0 && "nonExistent-hidden",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}>
+                  <img src="/assets/68691bc51a5e2da8e8cf.svg" className="nonExistent-WaumpusImg" />
+                  <Text.Normal className="nonExistent-WaumpusText">
+                    Wumpus Exists in nothingness
+                  </Text.Normal>
+                </Flex>
+              </div>
+            </Scroller>
+          ) : (
+            <Loader type={Loader.Type.WANDERING_CUBES} style={{ display: "flex", height: "75%" }} />
+          )}
         </div>
         <div
           className={["nonExistent-RemovalRow", selectedUsers.length === 0 && "nonExistent-hidden"]
