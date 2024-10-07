@@ -33,7 +33,8 @@ export default (): void => {
         !message?.interaction &&
         !message?.customRenderedContent &&
         !message?.changelogId &&
-        !message?.activityInstance
+        !message?.activityInstance &&
+        message.flags === 0
       )
         return null;
       return res;

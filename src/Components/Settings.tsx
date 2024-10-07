@@ -1,6 +1,7 @@
 import {
   fluxDispatcher as FluxDispatcher,
   modal as ModalUtils,
+  React,
   channels as UltimateChannelStore,
 } from "replugged/common";
 import { Button } from "replugged/components";
@@ -18,9 +19,11 @@ export const registerSettings = (): void => {
   }
 };
 export const Settings = (): React.ReactElement => {
+  const [key, setKey] = React.useState(`${Date.now()}`);
   return (
     <div>
       <SelectedUsers
+        key={key}
         header="Which Users Should Exist?"
         subText="Your Choice Bends Reality"
         unselectedSubText="These Users Will Stay Non-Existent"
@@ -52,7 +55,7 @@ export const Settings = (): React.ReactElement => {
           });
         }}
         onCancel={() => {
-          FluxDispatcher.dispatch({ type: "LAYER_POP_ALL" });
+          setKey(`${Date.now()}`);
         }}
       />
     </div>
