@@ -23,6 +23,8 @@ export default (): void => {
       (c) => c?.props?.id === "replugged",
     );
     const hiddenUsers = SettingValues.get("ids", defaultSettings.ids);
+    if (hiddenUsers.some(({ userId }) => userId === user.id)) return;
+
     (menu?.children as React.ReactElement[])?.splice?.(
       index,
       0,

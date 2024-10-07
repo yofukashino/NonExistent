@@ -12,6 +12,7 @@ export default ({
   subText,
   unselectedSubText,
   selectedSubText,
+  noValidUserComponent,
   userIds,
   onConfirm,
   onCancel,
@@ -20,6 +21,7 @@ export default ({
   subText?: string;
   unselectedSubText?: string;
   selectedSubText?: string;
+  noValidUserComponent?: React.ReactElement;
   userIds?: string[];
   onConfirm?: (users: { unselectedUsers: string[]; selectedUsers: string[] }) => void;
   onCancel?: () => void;
@@ -56,6 +58,7 @@ export default ({
       setUnselectedUsers((prevUnselected) => [...prevUnselected, userId]);
     }
   };
+  if (!userIds.length && noValidUserComponent) return noValidUserComponent;
   return (
     <Flex
       direction={Flex.Direction.VERTICAL}
@@ -92,7 +95,7 @@ export default ({
               All
             </Button>
           </div>
-          {Object.keys(mappedUser).length ? (
+          {Object.keys(mappedUser).length || !userIds.length ? (
             <Scroller className="nonExistent-RemovalScroller">
               <div className="nonExistent-RemovalScrollerInner">
                 {unselectedUsers.map(

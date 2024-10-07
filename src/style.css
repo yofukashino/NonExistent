@@ -78,3 +78,15 @@
 [class^="messagesWrapper"] [class^="divider"]:not(:has(+ li)) {
   display: none;
 }
+
+.non-existent-nothing-but-waumpus-img {
+  padding-top: 25%;
+  width: 100%;
+}
+.non-existent-nothing-but-waumpus-text {
+  margin: 10px;
+  font-size: 100%;
+  line-height: 20px;
+  text-align: center;
+  color: var(--text-muted) !important;
+}

@@ -10,6 +10,7 @@ import { defaultSettings } from "../lib/consts";
 import SelectedUsers from "./SelectedUsers";
 import Utils from "../lib/utils";
 import Types from "../types";
+import NothingButWaumpuSReality from "./NothingButWaumpu'sReality";
 
 export const registerSettings = (): void => {
   for (const key in defaultSettings) {
@@ -28,6 +29,7 @@ export const Settings = (): React.ReactElement => {
         subText="Your Choice Bends Reality"
         unselectedSubText="These Users Will Stay Non-Existent"
         selectedSubText="These Users Will Exist Again Upon Confirmation"
+        noValidUserComponent={<NothingButWaumpuSReality />}
         userIds={SettingValues.get("ids", defaultSettings.ids).map((u) => u.userId)}
         onConfirm={({ unselectedUsers }) => {
           if (
