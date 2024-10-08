@@ -1,6 +1,6 @@
 {
   "name": "non-existent",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "description": "Hide user from discord like if they never existed.",
   "engines": {
     "node": ">=20.0.0",

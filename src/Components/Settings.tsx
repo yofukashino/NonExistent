@@ -1,9 +1,4 @@
-import {
-  fluxDispatcher as FluxDispatcher,
-  modal as ModalUtils,
-  React,
-  channels as UltimateChannelStore,
-} from "replugged/common";
+import { modal as ModalUtils, React, channels as UltimateChannelStore } from "replugged/common";
 import { Button } from "replugged/components";
 import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
@@ -53,7 +48,6 @@ export const Settings = (): React.ReactElement => {
             cancelText: "No",
             confirmColor: Button.Colors.RED,
             onConfirm: () => window.location.reload(),
-            onCancel: () => FluxDispatcher.dispatch({ type: "LAYER_POP_ALL" }),
           });
         }}
         onCancel={() => {
