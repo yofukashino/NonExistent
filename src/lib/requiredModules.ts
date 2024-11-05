@@ -102,10 +102,13 @@ Modules.loadModules = async (): Promise<void> => {
     });
 
   Modules.ReferencedMessage ??= await webpack
-    .waitForModule<Types.GenericExport>(webpack.filters.bySource(".Messages.DEADCHAT_PROMPT_1;"), {
-      raw: true,
-      timeout: 10000,
-    })
+    .waitForModule<Types.GenericExport>(
+      webpack.filters.bySource(".GUILD_DEADCHAT_REVIVE_PROMPT)return"),
+      {
+        raw: true,
+        timeout: 10000,
+      },
+    )
     .then(({ exports }) => exports)
     .catch(() => {
       throw new Error("Failed To Find ReferencedMessage Module");
