@@ -8,7 +8,7 @@ export default (): void => {
   const Memo = webpack.getExportsForProps<Types.GenericMemo>(Modules.MessageConstructor, ["type"]);
   const generateContent = webpack.getFunctionBySource<Types.MessageContentGenerator["default"]>(
     Modules?.MessageContentGenerator,
-    "hideSimpleEmbedContent:",
+    ".parseInlineReply",
   );
   PluginInjector.after(
     Memo,

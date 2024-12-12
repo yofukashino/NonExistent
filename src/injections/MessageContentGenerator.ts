@@ -6,7 +6,7 @@ export default (): void => {
   const { MessageContentGenerator } = Modules;
   const loader = webpack.getFunctionKeyBySource(
     MessageContentGenerator,
-    "hideSimpleEmbedContent:",
+    ".parseInlineReply",
   ) as "default";
 
   PluginInjector.after(Modules.MessageContentGenerator, loader, (_args, res) => {
