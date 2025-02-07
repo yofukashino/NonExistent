@@ -54,6 +54,7 @@ export namespace Types {
     fetchMutualFriends?: DefaultTypes.AnyFunction;
     fetchProfile: DefaultTypes.AnyFunction;
     getUser: DefaultTypes.AnyFunction;
+    getUserProfile: DefaultTypes.AnyFunction;
     setFlag: DefaultTypes.AnyFunction;
   }
   export interface RelationshipStore extends Store {
@@ -513,10 +514,12 @@ export namespace Types {
     toggleSelfDeaf: DefaultTypes.AnyFunction;
     toggleSelfMute: DefaultTypes.AnyFunction;
   }
+
+  export type unmangled<T> = T & { raw: DefaultTypes.ModuleExports };
   export interface Modules {
     loadModules?: () => Promise<void>;
     ProfileActionsModule?: GenericModule;
-    ProfileActions?: ProfileActions;
+    ProfileActions?: Types.unmangled<ProfileActions>;
     VoiceUser?: VoiceUser;
     CallTiles?: GenericModule;
     ForYouItems?: ForYouItems;

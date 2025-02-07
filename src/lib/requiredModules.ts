@@ -1,41 +1,33 @@
 import { webpack } from "replugged";
+import Utils from "./utils";
 import Types from "../types";
+
 export const Modules: Types.Modules = {};
 
 Modules.loadModules = async (): Promise<void> => {
-  Modules.ProfileActionsModule ??= await webpack
-    .waitForModule<Types.GenericModule>(
+  Modules.ProfileActions ??= await webpack
+    .waitForModule<Types.DefaultTypes.RawModule>(
       webpack.filters.bySource("setFlag: user cannot be undefined"),
       {
         timeout: 10000,
+        raw: true,
       },
+    )
+    .then((v) =>
+      Utils.unmangleExports<Types.ProfileActions>(v, {
+        acceptAgreements: ".USER_ACCEPT_AGREEMENTS",
+        fetchCurrentUser: "CURRENT_USER_UPDATE",
+        getUserProfile: "USER_PROFILE_FETCH_START",
+        fetchProfile: "USER_PROFILE_FETCH_START",
+        getUser: "USER_UPDATE",
+        setFlag: "setFlag: user cannot be undefined",
+      }),
     )
     .catch(() => {
       throw new Error("Failed To Find ProfileActions Module");
     });
-
-  Modules.ProfileActions ??= {
-    acceptAgreements: webpack.getFunctionBySource(
-      Modules.ProfileActionsModule,
-      ".USER_ACCEPT_AGREEMENTS",
-    ),
-    fetchCurrentUser: webpack.getFunctionBySource(
-      Modules.ProfileActionsModule,
-      "CURRENT_USER_UPDATE",
-    ),
-    fetchProfile: webpack.getFunctionBySource(
-      Modules.ProfileActionsModule,
-      "USER_PROFILE_FETCH_START",
-    ),
-    getUser: webpack.getFunctionBySource(Modules.ProfileActionsModule, "USER_UPDATE"),
-    setFlag: webpack.getFunctionBySource(
-      Modules.ProfileActionsModule,
-      "setFlag: user cannot be undefined",
-    ),
-  };
-
   Modules.VoiceUser ??= await webpack
-    .waitForModule<Types.VoiceUser>(webpack.filters.bySource("this.renderPrioritySpeaker()"), {
+    .waitForModule<Types.VoiceUser>(webpack.filters.bySource('location:"VoiceUser"'), {
       timeout: 10000,
     })
     .catch(() => {
