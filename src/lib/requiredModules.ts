@@ -75,12 +75,9 @@ Modules.loadModules = async (): Promise<void> => {
     });
 
   Modules.MessageContentGenerator ??= await webpack
-    .waitForModule<Types.MessageContentGenerator>(
-      webpack.filters.bySource(".parseAutoModerationSystemMessage,"),
-      {
-        timeout: 10000,
-      },
-    )
+    .waitForModule<Types.MessageContentGenerator>(webpack.filters.bySource(".jumboable=!0"), {
+      timeout: 10000,
+    })
     .catch(() => {
       throw new Error("Failed To Find MessageContentGenertor Module");
     });
