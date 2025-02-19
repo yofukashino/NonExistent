@@ -11,4 +11,14 @@ export default [
       },
     ],
   },
+  {
+    find: "multipleBlockedUsers",
+    replacements: [
+      {
+        match: /\.filter\((\w+)=>null!==\w+/g,
+        replace: (prefix: string, user: string) =>
+          `${prefix}&&!replugged.plugins.getExports("dev.yofukashino.NonExistent")?._isHidden?.(${user})`,
+      },
+    ],
+  },
 ] as Types.DefaultTypes.PlaintextPatch[];
