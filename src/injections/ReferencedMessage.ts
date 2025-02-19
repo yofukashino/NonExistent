@@ -11,17 +11,15 @@ export default (): void => {
     ReferencedMessage,
     loader,
     (
-      [, _, __, ___, { message } = { message: null }]: [
-        unknown,
-        unknown,
-        unknown,
-        unknown,
-        { message: Types.Message },
-      ],
-      res: string[],
+      [
+        { replyMessage } = {
+          replyMessage: { message: null },
+        },
+      ]: [{ replyMessage: { message: Types.Message } }],
+      res: React.ReactElement,
     ) => {
       const ids = SettingValues.get("ids", defaultSettings.ids);
-      return ids.some(({ userId }) => userId === message?.author?.id) ? null : res;
+      return ids.some(({ userId }) => userId === replyMessage?.message?.author?.id) ? null : res;
     },
   );
 };
