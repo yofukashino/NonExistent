@@ -27,7 +27,7 @@ Modules.loadModules = async (): Promise<void> => {
       throw new Error("Failed To Find ProfileActions Module");
     });
   Modules.VoiceUser ??= await webpack
-    .waitForModule<Types.VoiceUser>(webpack.filters.bySource('location:"VoiceUser"'), {
+    .waitForModule<Types.VoiceUser>(webpack.filters.bySource("VoiceUserIcons"), {
       timeout: 10000,
     })
     .catch(() => {
