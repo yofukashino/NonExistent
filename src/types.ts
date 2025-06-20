@@ -65,7 +65,7 @@ export namespace Types {
     getPendingCount: DefaultTypes.AnyFunction;
     getRelationshipCount: DefaultTypes.AnyFunction;
     getRelationshipType: DefaultTypes.AnyFunction;
-    getRelationships: DefaultTypes.AnyFunction;
+    getMutableRelationships: DefaultTypes.AnyFunction;
     getSince: DefaultTypes.AnyFunction;
     getSinces: DefaultTypes.AnyFunction;
     isBlocked: DefaultTypes.AnyFunction;

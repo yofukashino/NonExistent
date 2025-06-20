@@ -3,7 +3,7 @@ import Modules from "../lib/requiredModules";
 import { defaultSettings } from "../lib/consts";
 
 export default (): void => {
-  PluginInjector.after(Modules.RelationshipStore, "getRelationships", (_args, res) => {
+  PluginInjector.after(Modules.RelationshipStore, "getMutableRelationships", (_args, res) => {
     const ids = SettingValues.get("ids", defaultSettings.ids);
     for (const { userId } of ids) {
       if (res[userId])
@@ -23,7 +23,7 @@ export default (): void => {
   });
 
   PluginInjector.after(Modules.RelationshipStore, "getPendingCount", () => {
-    return Object.entries(Modules.RelationshipStore?.getRelationships?.() ?? {}).filter(
+    return Object.entries(Modules.RelationshipStore?.getMutableRelationships?.() ?? {}).filter(
       ([_id, type]) => type === 3,
     ).length;
   });
