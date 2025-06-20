@@ -4,6 +4,7 @@ import {
 } from "replugged/common";
 import { SettingValues } from "./index";
 import { defaultSettings } from "./lib/consts";
+import Types from "./types";
 
 export const _checkMessageId = (channelId: string, messageId: string): boolean => {
   const ids = SettingValues.get("ids", defaultSettings.ids);
